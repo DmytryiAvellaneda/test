@@ -1,0 +1,6 @@
+dig1=int(input("Enter 1st digit: "))
+dig2=int(input("Enter 2nd digit: "))
+print("addition:", dig1+dig2)
+print("subtraction:", dig1-dig2)
+print("multiplication:", dig1*dig2)
+print("division:", dig1/dig2)
