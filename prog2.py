@@ -12,7 +12,7 @@ def custom_enter():
 
 def handling(list1, list2):
     print("handling")
-    c=input("select operation:\na - list of elements which exist in both lists\nb - list of elements which exist only in one list\nc - both lists sorted in ascending order\nd - both lists sorted in descending order\ne - list of all elements of two lists that are less than 30'\n")
+    c=input("select operation:\na - list of elements which exist in both lists\nb - list of elements which exist only in one list\nc - both lists sorted in ascending order\nd - both lists sorted in descending order\ne - list of all elements of two lists that are less than 30\n")
     match c:
         case "a":
             i=0
@@ -114,8 +114,9 @@ def handling(list1, list2):
 
 def main():
     a=1
-    dig=int(input("Select data:\n1 - default 2 - custom\n"))
+  #  dig=int(input("Select data:\n1 - default 2 - custom\n"))
     while a==1:
+        dig=int(input("Select data:\n1 - default 2 - custom\n"))
         if dig == 1:
             def_enter()
             a=0;
@@ -124,6 +125,6 @@ def main():
             a=0;
         else:
             print("Incorrect item. Please re-enter:")
-            dig=int(input("Select data:\n1 - default 2 - custom\n"))
+         #   dig=int(input("Select data:\n1 - default 2 - custom\n"))
 
 main()    
