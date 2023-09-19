@@ -80,17 +80,29 @@ class Project:
         print(self.__project_name, self.__customer, self.__customers_country, self.__project_type, self.__number_of_devs, self.__number_of_qas, self.__project_duration)
 
     def devs_price_per_month(self):
-        print(self.__number_of_devs*10000)
+        result=self.__number_of_devs*10000
+        return result
 
     def qas_price_per_month(self):
-        print(self.__number_of_qas*6000)
+        result=self.__number_of_qas*6000
+        return result
 
     def full_price_per_year(self):
-        print((self.__number_of_devs*10000+self.__number_of_qas*6000)*12)
+        result=(self.__number_of_devs*10000+self.__number_of_qas*6000)*12
+        return result
 
     def full_price_per_month(self):
-        print(self.__number_of_devs*10000+self.__number_of_qas*6000)
+        result=self.__number_of_devs*10000+self.__number_of_qas*6000
+        return result
 
+    def show_project_info(self):
+        if self.number_of_devs>0 and self.number_of_qas>0:
+            print(self.project_type, "project", self.project_name, "from", self.customers_country, "bring us: ", self.full_price_per_month(), "every month, ", self.full_price_per_year(), "every year")
+        elif self.number_of_devs>0 and self.number_of_qas==0:
+            print(self.project_type, "project", self.project_name, "from", self.customers_country, "bring us: ", self.devs_price_per_month(), "every month, ", self.full_price_per_year(), "every year\nWe need to sell them several QAs!")
+        elif self.number_of_devs==0 and self.number_of_qas>0:
+            print(self.project_type, "project", self.project_name, "from", self.customers_country, "bring us: ", self.qas_price_per_month(), "every month, ", self.full_price_per_year(), "every year\nWe need to sell them several devs!")
+   
 def main():
     sa=Project("WebCool")
     print("Enter data for the project: ")
@@ -151,30 +163,13 @@ def main():
         c=input("select operation:\na - Calculate the monthly price for all devs on the project\nb - Calculate the monthly price for all QAs the project\nc - Calculate the full (QA + dev) price per year\nd - Show project info\nAny other key - exit\n")
         match c:
             case "a":
-                sa.devs_price_per_month()
+                print(sa.devs_price_per_month())
             case "b":
-                sa.qas_price_per_month()
+                print(sa.qas_price_per_month())
             case "c":
-                sa.full_price_per_year()
+                print(sa.full_price_per_year())
             case "d":
-                if sa.number_of_devs>0 and sa.number_of_qas>0:
-                    print(sa.project_type, "project", sa.project_name, "from", sa.customers_country, "bring us: ")
-                    sa.full_price_per_month()
-                    print ("every month")
-                    sa.full_price_per_year()
-                    print ("every year")
-                elif sa.number_of_devs>0 and sa.number_of_qas==0:
-                    print(sa.project_type, "project", sa.project_name, "from", sa.customers_country, "bring us: ")
-                    sa.devs_price_per_month()
-                    print ("every month")
-                    sa.full_price_per_year()
-                    print ("every year\nWe need to sell them several QAs!")
-                elif sa.number_of_devs==0 and sa.number_of_qas>0:
-                    print(sa.project_type, "project", sa.project_name, "from", sa.customers_country, "bring us: ")
-                    sa.qas_price_per_month()
-                    print ("every month")
-                    sa.full_price_per_year()
-                    print ("every year\nWe need to sell them several devs!")                    
+                sa.show_project_info()
             case _:
                 break    
     
